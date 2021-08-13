@@ -3,6 +3,10 @@ import env from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+
+// routes
+import employeeRoutes from './routes/Employees.js';
+
 const app = express();
 
 env.config();
@@ -21,7 +25,7 @@ mongoose.connect(
 
 app.use(cors());
 app.use(express.json());
-// app.use("api/", employeesRoutes)
+app.use('/api', employeeRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);

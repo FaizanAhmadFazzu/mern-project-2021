@@ -1,36 +1,85 @@
-import React from 'react'
-import Modal from '../../../components/UI/Modal/'
+import React from "react";
+import Input from "../../../components/UI/Input";
+import Modal from "../../../components/UI/Modal/";
+import { Row, Col } from "react-bootstrap";
 
 const AddNewEmployeeModal = (props) => {
+  const { 
+      show, 
+      handleClose, 
+      modalTitle, 
+      employee,
+      onChange,
+      onSubmit
+     } = props;
+  return (
+    <Modal
+      show={show}
+      handleClose={handleClose}
+      modalTitle={modalTitle}
+      buttons={[
+        {
+          label: "Close",
+          color: "danger",
+          onClick: handleClose,
+        },
+        {
+          label: "Save",
+          color: "success",
+          onClick: onSubmit,
+        },
+      ]}
+    >
+      <Row>
+        <Col>
+          <Input 
+          label={"Name"}
+          type={'text'}
+          placeholder={'Name'}
+          name={'name'}
+          value={employee.name}
+          onChange={onChange}
+           />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Input 
+          label={"Email"}
+          type={'email'}
+          placeholder={'Email'}
+          name={'email'}
+          value={employee.email}
+          onChange={onChange}
+           />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Input 
+          label={"Address"}
+          type={'textarea'}
+          placeholder={'Address'}
+          name={'address'}
+          value={employee.address}
+          onChange={onChange}
+           />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Input 
+          label={"Phone"}
+          type={'text'}
+          placeholder={'Phone'}
+          name={'phone'}
+          value={employee.phone}
+          onChange={onChange}
+           />
+        </Col>
+      </Row>
+    </Modal>
+  );
+};
 
-    const {
-        show,
-        handleClose,
-        modalTitle,
-        onSubmit
-    } = props;
-    return (
-        <Modal 
-            show={show}
-            handleClose={handleClose}
-            modalTitle={modalTitle}
-            buttons = {[
-                {
-                    label: 'Save',
-                    color: 'success',
-                    onClick: onSubmit
-                },
-                {
-                    label: 'Close',
-                    color: 'danger',
-                    onClick: handleClose
-                }
-            ]}
-        >
-
-        </Modal>
-    )
-}
-
-export default AddNewEmployeeModal
-
+export default AddNewEmployeeModal;
